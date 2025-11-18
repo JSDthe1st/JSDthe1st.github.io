@@ -1,0 +1,51 @@
+* {
+    font-family: "Comic Sans MS", cursive;
+}
+
+
+
+
+#title {
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(5, max-content);
+    grid-template-rows: repeat(5, max-content);
+    justify-content: center;
+}
+
+.tile {
+    box-sizing: border-box;
+    height: 200px;
+    width: 200px;
+
+    border-radius: 20px;
+    border: black 1px solid;
+    background-color: lightgray;
+
+    padding: 10px;
+    margin: 5px;
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    user-select: none;
+}
+
+.tileX {
+    position: absolute;
+    margin: auto;
+
+    font-size: 180px;
+    color:red;
+    opacity: 60%;
+}
+
