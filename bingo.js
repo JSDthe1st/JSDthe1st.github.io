@@ -1,10 +1,14 @@
-function choose(sender) {
-    const inner = sender.querySelector(".tileX");
+const tiles = document.querySelectorAll(".tile");
 
-    if (inner.style.opacity === "0"){
-        inner.style.opacity = "0.6";
-    }
-    else {
-        inner.style.opacity = "0.0";
+tiles.forEach(tile => {
+    tile.addEventListener("pointerdown", () => choose(tile));
+});
+
+function choose(sender) {
+    const x = sender.querySelector(".tileX");
+    if (x.style.opacity === "0" || x.style.opacity === "") {
+        x.style.opacity = "0.6";
+    } else {
+        x.style.opacity = "0.0";
     }
 }
