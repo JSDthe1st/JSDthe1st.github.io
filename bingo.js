@@ -1,7 +1,7 @@
 const tiles = document.querySelectorAll(".tile");
 
 tiles.forEach(tile => {
-    tile.addEventListener("pointerdown", () => choose(tile));
+    tile.addEventListener("pointerup", () => choose(tile));
 });
 
 function choose(sender) {

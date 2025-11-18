@@ -25,6 +25,7 @@
     width: 180px;
 
     font-size: 1.3em;
+    padding: 10px;
 
     border-radius: 20px;
     border: black 1px solid;
@@ -43,7 +44,7 @@
 
 .tileX {
     position: absolute;
-    margin: auto;
+    margin: auto auto 20px auto;
 
     font-size: 180px;
     color:red;
