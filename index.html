@@ -3,138 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <title>Bingo</title>
-    <link rel="stylesheet" href="bingo.css">
+    <style>
+        /* Base reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 0;
+            color: #e2e8f0;
+        }
+
+        #title {
+            font-size: 80px;
+            font-weight: 800;
+            letter-spacing: 8px;
+            color: #f8fafc;
+            text-shadow: 3px 3px 0 #334155;
+            margin-bottom: 40px;
+        }
+
+        #board {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            width: 98%;
+            max-width: 1100px;
+        }
+
+        .tile {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border-radius: 20px;
+            padding: 18px;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #e2e8f0;
+            position: relative;
+            border: 2px solid #334155;
+            transition: 0.25s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            user-select: none;
+        }
+
+        .tile:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.7);
+            border-color: #475569;
+            background: linear-gradient(135deg, #273449, #111827);
+        }
+
+        .tileX {
+            line-height: 150%;
+            position: absolute;
+            font-size: 200px;
+            top: 43%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(239, 68, 68, 0.95);
+            opacity: 0;
+            transition: opacity 0.25s ease;
+            pointer-events: none;
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+            user-select: none;
+        }
+
+        .tile.active .tileX {
+            opacity: 50%;
+        }
+    </style>
 </head>
 <body>
-    <div id="title">BINGO</div>
-    <div id="board">
-        <div class="tile">
-            TO NIE JEST ŁATWY PRZEDMIOT
-            <div class="tileX">X</div>
-        </div>
+<div id="title">BINGO</div>
+<div id="board">
+    <div class="tile">TO NIE JEST ŁATWY PRZEDMIOT<div class="tileX">X</div></div>
+    <div class="tile">NA CHŁOPSKI ROZUM<div class="tileX">X</div></div>
+    <div class="tile">PRAŃSTWO<div class="tileX">X</div></div>
+    <div class="tile">KTOŚ TO ROZUMIE, CZY NIE?<div class="tileX">X</div></div>
+    <div class="tile">*DEPRESJA BO MARKER NIE DZIAŁA*<div class="tileX">X</div></div>
+    <div class="tile">*ZAKŁADANIE DALNEJ DOLENJ WARGI NA GÓRNĄ*<div class="tileX">X</div></div>
+    <div class="tile">ALE PROSZĘ NIE SPAĆ, DOBRZE?<div class="tileX">X</div></div>
+    <div class="tile">*GADKA O RENCINIE*<div class="tileX">X</div></div>
+    <div class="tile">LADIES FIRST!<div class="tileX">X</div></div>
+    <div class="tile">NIE RÓBMY Z TEGO TAJEMNICY<div class="tileX">X</div></div>
+    <div class="tile">*WKURZENIE, ŻE KTOŚ WYCHODZI*<div class="tileX">X</div></div>
+    <div class="tile">*EUFORIA GDY ODPOWIE MU DZIEWCZYNA*<div class="tileX">X</div></div>
+    <div class="tile">*BRAK CHĘCI DO ŻYCIA*<div class="tileX">X</div></div>
+    <div class="tile">NO JUŻ NIEDŁUGO, ZARAZ KONIEC<div class="tileX">X</div></div>
+    <div class="tile">ZGADZA SIĘ?!<div class="tileX">X</div></div>
+    <div class="tile">*SUCHY ŻART - NIKT SIĘ NIE ŚMIEJE*<div class="tileX">X</div></div>
+    <div class="tile">*KTOŚ DOSTAŁ PLUSA*<div class="tileX">X</div></div>
+    <div class="tile">PHA!<div class="tileX">X</div></div>
+    <div class="tile">*LOSOWA HISOTRIA Z ŻYCIA*<div class="tileX">X</div></div>
+    <div class="tile">ZGADZA SIĘ CZY NIE?<div class="tileX">X</div></div>
+    <div class="tile">NIE MA INTERAKCJI<div class="tileX">X</div></div>
+    <div class="tile">*PRZERWA*<div class="tileX">X</div></div>
+    <div class="tile">*KTOŚ ODPOWIEDZIAŁ NA "ZGADZA SIĘ"*<div class="tileX">X</div></div>
+    <div class="tile">ZWAŁ JAK ZWAŁ<div class="tileX">X</div></div>
+    <div class="tile">*PRZECIĄGANIE ZAJĘĆ*<div class="tileX">X</div></div>
+</div>
 
-        <div class="tile">
-            NA CHŁOPSKI ROZUM
-            <div class="tileX">X</div>
-        </div>
-
-        <div class="tile">
-            PAŃSTWO
-            <div class="tileX">X</div>
-        </div>
-
-        <div class="tile">
-            KTOŚ TO ROZUMIE, CZY NIE?
-            <div class="tileX">X</div>
-        </div>
-
-        <div class="tile">
-            *DEPRESJA BO MARKER NIE DZIAŁA*
-            <div class="tileX">X</div>
-        </div>
-
-        <div class="tile">
-            *ZAKŁADANIE DALNEJ DOLENJ WARGI NA GÓRNĄ*
-            <div class="tileX">X</div>
-        </div>
-
-        <div class="tile">
-            ALE PROSZĘ NIE SPAĆ, DOBRZE?
-            <div class="tileX">X</div>
-        </div>
-
-        <div class="tile">
-            *GADKA O RENCINIE*
-            <div class="tileX">X</div>
-        </div>
-
-        <div class="tile">
-            LADIES FIRST!
-            <div class="tileX">X</div>
-        </div>
-
-        <div class="tile">
-            NIE RÓBMY Z TEGO TAJEMNICY
-            <div class="tileX">X</div>
-        </div>
-
-        <div class="tile">
-            *WKURZENIE, ŻE KTOŚ WYCHODZI*
-            <div class="tileX">X</div>
-        </div>
-
-        <div class="tile">
-            *EUFORIA GDY ODPOWIE MU DZIEWCZYNA*
-            <div class="tileX">X</div>
-        </div>
-
-        <div class="tile">
-            *BRAK CHĘCI DO ŻYCIA*
-            <div class="tileX">X</div>
-        </div>
-
-        <div class="tile">
-            NO JUŻ NIEDŁUGO, ZARAZ KONIEC
-            <div class="tileX">X</div>
-        </div>
-
-        <div class="tile">
-            ZGADZA SIĘ?!
-            <div class="tileX">X</div>
-        </div>
-
-        <div class="tile">
-            *SUCHY ŻART - NIKT SIĘ NIE ŚMIEJE*
-            <div class="tileX">X</div>
-        </div>
-
-        <div class="tile">
-            *KTOŚ DOSTAŁ PLUSA*
-            <div class="tileX">X</div>
-        </div>
-
-        <div class="tile">
-            PHA!
-            <div class="tileX">X</div>
-        </div>
-
-        <div class="tile">
-            *LOSOWA HISOTRIA Z ŻYCIA*
-            <div class="tileX">X</div>
-        </div>
-
-        <div class="tile">
-            ZGADZA SIĘ CZY NIE?
-            <div class="tileX">X</div>
-        </div>
-
-        <div class="tile">
-            NIE MA INTERAKCJI
-            <div class="tileX">X</div>
-        </div>
-
-        <div class="tile">
-            *PRZERWA*
-            <div class="tileX">X</div>
-        </div>
-
-        <div class="tile">
-            *KTOŚ ODPOWIEDZIAŁ NA "ZGADZA SIĘ"*
-            <div class="tileX">X</div>
-        </div>
-
-        <div class="tile">
-            ZWAŁ JAK ZWAŁ
-            <div class="tileX">X</div>
-        </div>
-
-        <div class="tile">
-            *PRZECIĄGANIE ZAJĘĆ*
-            <div class="tileX">X</div>
-        </div>
-    </div>
-
-
-<script src="bingo.js"></script>
+<script>
+    document.querySelectorAll('.tile').forEach(tile => {
+        tile.addEventListener('click', () => {
+            tile.classList.toggle('active');
+        });
+    });
+</script>
 </body>
 </html>
