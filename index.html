@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <title>Bingo</title>
     <style>
-        /* Base reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: "Segoe UI", sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -36,7 +36,7 @@
             grid-template-columns: repeat(5, 1fr);
             gap: 10px;
             width: 98%;
-            max-width: 1100px;
+            max-width: 1200px;
         }
 
         .tile {
@@ -47,10 +47,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            font-size: 1.3em;
-            font-weight: 600;
-            color: #e2e8f0;
             position: relative;
             border: 2px solid #334155;
             transition: 0.25s ease;
@@ -59,21 +55,33 @@
             user-select: none;
         }
 
+        @media (hover: hover) and (pointer: fine) {
         .tile:hover {
             transform: translateY(-4px) scale(1.03);
             box-shadow: 0 6px 18px rgba(0,0,0,0.7);
             border-color: #475569;
             background: linear-gradient(135deg, #273449, #111827);
+            user-select: none;
+        }}
+
+        .tileText {
+            z-index: 1;
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: 600;
+            text-shadow: 4px 4px 4px black;
+            color: #e2e8f0;
         }
 
         .tileX {
             line-height: 150%;
             position: absolute;
-            font-size: 200px;
-            top: 43%;
+            font-size: 300px;
+            font-weight: 500;
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: rgba(239, 68, 68, 0.95);
+            color: rgba(253, 35, 35, 0.95);
             opacity: 0;
             transition: opacity 0.25s ease;
             pointer-events: none;
@@ -82,44 +90,60 @@
         }
 
         .tile.active .tileX {
-            opacity: 50%;
+            opacity: 100%;
+            user-select: none;
         }
     </style>
 </head>
 <body>
 <div id="title">BINGO</div>
 <div id="board">
-    <div class="tile">TO NIE JEST ŁATWY PRZEDMIOT<div class="tileX">X</div></div>
-    <div class="tile">NA CHŁOPSKI ROZUM<div class="tileX">X</div></div>
-    <div class="tile">PRAŃSTWO<div class="tileX">X</div></div>
-    <div class="tile">KTOŚ TO ROZUMIE, CZY NIE?<div class="tileX">X</div></div>
-    <div class="tile">*DEPRESJA BO MARKER NIE DZIAŁA*<div class="tileX">X</div></div>
-    <div class="tile">*ZAKŁADANIE DALNEJ DOLENJ WARGI NA GÓRNĄ*<div class="tileX">X</div></div>
-    <div class="tile">ALE PROSZĘ NIE SPAĆ, DOBRZE?<div class="tileX">X</div></div>
-    <div class="tile">*GADKA O RENCINIE*<div class="tileX">X</div></div>
-    <div class="tile">LADIES FIRST!<div class="tileX">X</div></div>
-    <div class="tile">NIE RÓBMY Z TEGO TAJEMNICY<div class="tileX">X</div></div>
-    <div class="tile">*WKURZENIE, ŻE KTOŚ WYCHODZI*<div class="tileX">X</div></div>
-    <div class="tile">*EUFORIA GDY ODPOWIE MU DZIEWCZYNA*<div class="tileX">X</div></div>
-    <div class="tile">*BRAK CHĘCI DO ŻYCIA*<div class="tileX">X</div></div>
-    <div class="tile">NO JUŻ NIEDŁUGO, ZARAZ KONIEC<div class="tileX">X</div></div>
-    <div class="tile">ZGADZA SIĘ?!<div class="tileX">X</div></div>
-    <div class="tile">*SUCHY ŻART - NIKT SIĘ NIE ŚMIEJE*<div class="tileX">X</div></div>
-    <div class="tile">*KTOŚ DOSTAŁ PLUSA*<div class="tileX">X</div></div>
-    <div class="tile">PHA!<div class="tileX">X</div></div>
-    <div class="tile">*LOSOWA HISOTRIA Z ŻYCIA*<div class="tileX">X</div></div>
-    <div class="tile">ZGADZA SIĘ CZY NIE?<div class="tileX">X</div></div>
-    <div class="tile">NIE MA INTERAKCJI<div class="tileX">X</div></div>
-    <div class="tile">*PRZERWA*<div class="tileX">X</div></div>
-    <div class="tile">*KTOŚ ODPOWIEDZIAŁ NA "ZGADZA SIĘ"*<div class="tileX">X</div></div>
-    <div class="tile">ZWAŁ JAK ZWAŁ<div class="tileX">X</div></div>
-    <div class="tile">*PRZECIĄGANIE ZAJĘĆ*<div class="tileX">X</div></div>
+    <div class="tile">
+        <div class="tileText">TO NIE JEST ŁATWY PRZEDMIOT</div>
+        <div class="tileX">×</div>
+    </div>
+    <div class="tile"><div class="tileText">NA CHŁOPSKI ROZUM</div><div class="tileX">×</div></div>
+    <div class="tile"><div class="tileText">PRAŃSTWO</div><div class="tileX">×</div></div>
+    <div class="tile"><div class="tileText">KTOŚ TO ROZUMIE, CZY NIE?</div><div class="tileX">×</div></div>
+    <div class="tile"><div class="tileText">*DEPRESJA BO MARKER NIE DZIAŁA*</div><div class="tileX">×</div></div>
+    <div class="tile"><div class="tileText">*ZAKŁADANIE DALNEJ WARGI NA GÓRNĄ*</div><div class="tileX">×</div></div>
+    <div class="tile"><div class="tileText">ALE PROSZĘ NIE SPAĆ, DOBRZE?</div><div class="tileX">×</div></div>
+    <div class="tile"><div class="tileText">*GADKA O RENCINIE*</div><div class="tileX">×</div></div>
+    <div class="tile"><div class="tileText">LADIES FIRST!</div><div class="tileX">×</div></div>
+    <div class="tile"><div class="tileText">NIE RÓBMY Z TEGO TAJEMNICY</div><div class="tileX">×</div></div>
+    <div class="tile"><div class="tileText">*WKURZENIE, ŻE KTOŚ WYCHODZI*</div><div class="tileX">×</div></div>
+    <div class="tile"><div class="tileText">*EUFORIA GDY ODPOWIE MU DZIEWCZYNA*</div><div class="tileX">×</div></div>
+    <div class="tile"><div class="tileText">*BRAK CHĘCI DO ŻYCIA*</div><div class="tileX">×</div></div>
+    <div class="tile"><div class="tileText">NO JUŻ NIEDŁUGO, ZARAZ KONIEC</div><div class="tileX">×</div></div>
+    <div class="tile"><div class="tileText">ZGADZA SIĘ?!</div><div class="tileX">×</div></div>
+    <div class="tile"><div class="tileText">*SUCHY ŻART - NIKT SIĘ NIE ŚMIEJE*</div><div class="tileX">×</div></div>
+    <div class="tile"><div class="tileText">*KTOŚ DOSTAŁ PLUSA*</div><div class="tileX">×</div></div>
+    <div class="tile"><div class="tileText">PHA!</div><div class="tileX">×</div></div>
+    <div class="tile"><div class="tileText">*LOSOWA HISOTRIA Z ŻYCIA*</div><div class="tileX">×</div></div>
+    <div class="tile"><div class="tileText">ZGADZA SIĘ CZY NIE?</div><div class="tileX">×</div></div>
+    <div class="tile"><div class="tileText">NIE MA INTERAKCJI</div><div class="tileX">×</div></div>
+    <div class="tile"><div class="tileText">*PRZERWA*</div><div class="tileX">×</div></div>
+    <div class="tile"><div class="tileText">*KTOŚ ODPOWIEDZIAŁ NA "ZGADZA SIĘ"*</div><div class="tileX">×</div></div>
+    <div class="tile"><div class="tileText">ZWAŁ JAK ZWAŁ</div><div class="tileX">×</div></div>
+    <div class="tile"><div class="tileText">*PRZECIĄGANIE ZAJĘĆ*</div><div class="tileX">×</div></div>
 </div>
-
 <script>
     document.querySelectorAll('.tile').forEach(tile => {
-        tile.addEventListener('click', () => {
-            tile.classList.toggle('active');
+        let startX, startY;
+
+        tile.addEventListener('pointerdown', (e) => {
+            startX = e.clientX;
+            startY = e.clientY;
+        });
+
+        tile.addEventListener('pointerup', (e) => {
+            const endX = e.clientX;
+            const endY = e.clientY;
+
+            // Only toggle if the pointer hasn't moved much (tap vs drag)
+            if (Math.abs(endX - startX) < 10 && Math.abs(endY - startY) < 10) {
+                tile.classList.toggle('active');
+            }
         });
     });
 </script>
